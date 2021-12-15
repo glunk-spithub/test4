@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+  namespace: buttercup-store
+  labels:
+    app: buttercup-store
+    tier: middleware
+spec:
+  #type: LoadBalancer
+  #type: ClusterIP
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+  - protocol: TCP
+    port: 4201
+    targetPort: 4201
+  selector:
+    name: cartservice
+
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: cartservice
+#  namespace: buttercup-store
+#  labels:
+#    app: buttercup-store
+#    tier: middleware 
+#spec:
+#  type: LoadBalancer
+#  selector:
+#    name: cartservice
+#  ports:
+#    - name: cartservice
+#      port: 4201
+#      targetPort: 4201

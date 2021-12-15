@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ordersservice
+  namespace: buttercup-store
+  labels:
+    app: buttercup-store
+    tier: middleware
+spec:
+  #type: LoadBalancer
+  #type: ClusterIP
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+  - protocol: TCP
+    port: 4201
+    targetPort: 4201
+  selector:
+    name: ordersservice
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: ordersservice
+#  namespace: buttercup-store
+#  labels:
+#    app: buttercup-store
+#    tier: middleware
+#spec:
+#  type: LoadBalancer
+#  selector:
+#    name: ordersservice
+#  ports:
+#    - name: ordersservice
+#      port: 4201
+#      targetPort: 4201
